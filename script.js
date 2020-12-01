@@ -113,9 +113,10 @@ async function getJokes() {
   try {
     const res = await fetch(apiUrl);
     const data = await res.json();
-    if (data.joke) {
+    if (data.setup) {
+      joke = `${data.setup} ... ${data.delivry}`;
     } else {
-      joke = ``;
+      joke = data.joke;
     }
   } catch (error) {
     // Catch errors
