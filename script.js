@@ -130,7 +130,9 @@ async function getJokes() {
     } else {
       joke = data.joke;
     }
-    console.log(joke);
+
+    // Disabale button before playing
+    button.disabled = true;
     tellMe(joke);
   } catch (error) {
     // Catch errors
@@ -138,4 +140,8 @@ async function getJokes() {
   }
 }
 
+// Event Listeners
 button.addEventListener("click", getJokes);
+audioElement.addEventListener("ended", () => {
+  button.disabled = false;
+});
